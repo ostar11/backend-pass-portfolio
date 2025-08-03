@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ class SimpleEventListenerTest {
     @Autowired
     private TestEventListener testEventListener;
 
-    @Ignore
+    @Disabled
     @Test
     @DisplayName("@EventListener는 트랜잭션이 없어도 정상 동작한다")
     void eventListenerWorksWithoutTransaction() throws InterruptedException {
@@ -55,7 +56,7 @@ class SimpleEventListenerTest {
         assertThat(testEventListener.isTransactionalEventListenerExecuted()).isFalse();
     }
 
-    @Ignore
+    @Disabled
     @Test
     @DisplayName("@TransactionalEventListener는 활성 트랜잭션이 필요하다")
     void transactionalEventListenerRequiresActiveTransaction() throws InterruptedException {
@@ -72,7 +73,7 @@ class SimpleEventListenerTest {
         assertThat(testEventListener.isTransactionalEventListenerExecuted()).isTrue();
     }
 
-    @Ignore
+    @Disabled
     @Test
     @DisplayName("현재 코드 구조에서 @TransactionalEventListener는 작동하지 않는다")
     void currentStructureDoesNotWorkWithTransactionalEventListener() throws InterruptedException {
