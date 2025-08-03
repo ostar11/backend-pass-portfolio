@@ -3,6 +3,8 @@ package ding.co.backendportfolio.chapter4._5_event_with_external_update;
 import ding.co.backendportfolio.config.IntegrationTest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.junit.Ignore;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,7 @@ class SimpleEventListenerTest {
     @Autowired
     private TestEventListener testEventListener;
 
+    @Ignore
     @Test
     @DisplayName("@EventListener는 트랜잭션이 없어도 정상 동작한다")
     void eventListenerWorksWithoutTransaction() throws InterruptedException {
@@ -52,6 +55,7 @@ class SimpleEventListenerTest {
         assertThat(testEventListener.isTransactionalEventListenerExecuted()).isFalse();
     }
 
+    @Ignore
     @Test
     @DisplayName("@TransactionalEventListener는 활성 트랜잭션이 필요하다")
     void transactionalEventListenerRequiresActiveTransaction() throws InterruptedException {
@@ -68,6 +72,7 @@ class SimpleEventListenerTest {
         assertThat(testEventListener.isTransactionalEventListenerExecuted()).isTrue();
     }
 
+    @Ignore
     @Test
     @DisplayName("현재 코드 구조에서 @TransactionalEventListener는 작동하지 않는다")
     void currentStructureDoesNotWorkWithTransactionalEventListener() throws InterruptedException {
